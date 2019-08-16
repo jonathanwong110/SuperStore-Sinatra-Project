@@ -8,5 +8,6 @@ end
 
 use Rack::MethodOverride
 use ItemsController
+use MessagesController
 use UsersController
 run ApplicationController
