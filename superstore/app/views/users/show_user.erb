@@ -9,7 +9,9 @@
     <p> ____________________ </p>
   <% end %>
 <% end %>
-
+<% if current_user.id != @user.id%>
+  <a href="/messages/new">Message User</a><br><br>
+<% end %>
 <a href="/users">List of Users</a><br><br>
 <a href="/items">List of Items</a><br><br>
 <a href="/items/new">Create a New Item</a><br><br>
