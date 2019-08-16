@@ -1,0 +1,15 @@
+<h2> Welcome <%=current_user.username %>! </h2>
+<p> ____________________ </p>
+<% @items.each do |item| %>
+  <h3>Title: <%= item.title %></h3>
+  <h3>Price: <%= item.price %></h3>
+  <h3>Description: <%= item.description %></h3>
+  <h3>Item ID: <%= item.id %></h3>
+  <h3>Seller: <%= item.user.username %></h3>
+  <p> ____________________ </p>
+<% end %>
+ <br>
+<br>
+<a href="/users">List of Users</a><br><br>
+<a href="/items/new">Create a New Item</a><br><br>
+<a href="/logout">Log Out</a>

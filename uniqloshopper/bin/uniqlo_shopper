@@ -1,4 +1,4 @@
-#!usr/bin/env ruby
+#!/usr/local/rvm/rubies/ruby-2.6.1/bin/ruby
 
 require_relative "../lib/uniqloshopper"
 

@@ -1,0 +1,15 @@
+<h1>Welcome <%= current_user.username %>!</h1>
+<h2>New Item</h2>
+  <form action='/items' method="POST">
+    Title:
+    <input type="text" name="title" id="title">
+    Price:
+    <input type="text" name="price" id="price">
+    Description:
+    <input type="text" name="description" id="description">
+    <input type="submit" name="submit" value="Create Your Item">
+  </form>
+
+<br><br>
+<a href="/items">Items for Sale</a><br><br>
+<a href="/logout">Log Out</a>
