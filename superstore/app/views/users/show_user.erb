@@ -2,7 +2,7 @@
 <h3> Viewing Username: <%= @user.username %> | Seller ID: <%= @user.id %> </h3>
 <p> ____________________ </p>
 <% @items.each do |item| %>
-  <% if item.id == @user.id %>
+  <% if item.user_id == @user.id %>
     <h3>Title: <%= item.title %></h3>
     <h3>Price: $<%= item.price %></h3>
     <h3>Description: <%= item.description %></h3>
