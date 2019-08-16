@@ -1,5 +1,0 @@
-#!/usr/local/rvm/rubies/ruby-2.6.1/bin/ruby
-
-require_relative "../lib/uniqloshopper"
-
-UniqloShopper::CLI.new.call
