@@ -1,0 +1,10 @@
+<h1>Welcome <%= current_user.username %>!</h1>
+<h2>New Message</h2>
+  <form action='/messages' method="POST">
+    <input type="text" name="message" id="message">
+    <input type="submit" name="submit" value="Submit Message">
+  </form>
+
+<br><br>
+<a href="/items">Items for Sale</a><br><br>
+<a href="/logout">Log Out</a>
