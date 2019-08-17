@@ -11,7 +11,6 @@ class ItemsController < ApplicationController
   
   get '/items/new' do
     if is_logged_in?
-      @user = current_user
       erb :'/items/new'
     else
       redirect '/login'
