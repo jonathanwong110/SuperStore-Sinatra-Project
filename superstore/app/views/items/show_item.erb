@@ -1,8 +1,8 @@
 <h2> Welcome <%=current_user.username %>! </h2>
 <p> ____________________ </p>
-<h3>Title: <%= @item.title %> </h3>
+<h3>Title: <%= @item.title.capitalize %> </h3>
 <h3>Price: $<%= @item.price %> </h3>
-<h3>Description: <%= @item.description %> </h3>
+<h3>Description: <%= @item.description.capitalize %> </h3>
 <h3>Seller: <%= @item.user.username %> </h3>
 <h3>Seller's Location: <%= @item.user.location %></h3>
 <p> ____________________ </p>
@@ -13,8 +13,9 @@
   </form>
 <% end %>
 <% if current_user.id == @item.user_id%>
-  <a href="/items/<%=@item.id%>/edit">Edit Item</a><br><br>
+  <a href="/items/<%=@item.id%>/edit">Edit Item | </a>
 <% end %>
-<a href="/items">List of Items</a><br><br>
-<a href="/items/new">Create a New Item</a><br><br>
+<a href="/items">List of Items | </a>
+<a href="/items/new">Create a New Item | </a>
+<a href="/messages">View Messages</a><br><br>
 <a href="/logout">Log Out</a>
