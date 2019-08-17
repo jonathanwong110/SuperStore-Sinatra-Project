@@ -11,7 +11,6 @@ class MessagesController < ApplicationController
   
   get '/messages/new' do
     if is_logged_in?
-      @user = current_user
       erb :'/messages/new'
     else
       redirect '/login'
@@ -34,7 +33,6 @@ class MessagesController < ApplicationController
   get '/messages/:id' do
     if is_logged_in?
       @message = Message.find(params[:id])
-      @user = User.find(params[:id])
       erb :'/messages/show_message'
     else
       redirect '/login'
