@@ -4,17 +4,17 @@
 <p> ____________________ </p>
 <% @items.each do |item| %>
   <% if item.user_id == @user.id %>
-    <h3>Title: <%= item.title %></h3>
+    <h3>Title: <%= item.title.capitalize %></h3>
     <h3>Price: $<%= item.price %></h3>
-    <h3>Description: <%= item.description %></h3>
+    <h3>Description: <%= item.description.capitalize %></h3>
     <a href="/items/<%=item.id%>">View Item</a>
     <p> ____________________ </p>
   <% end %>
 <% end %>
+<a href="/items">List of Items | </a>
 <% if current_user.id != @user.id%>
-  <a href="/messages/new">Message User | </a>
+  <a href="/messages/new">New Message | </a>
 <% end %>
 <a href="/users">List of Users | </a>
-<a href="/items">List of Items | </a>
 <a href="/items/new">Create a New Item</a><br><br>
 <a href="/logout">Log Out</a>
