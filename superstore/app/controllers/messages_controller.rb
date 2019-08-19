@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
       @messages = Message.all
       erb :'/messages/messages'
     else
-      redirect '/users/login'
+      redirect '/login'
     end
   end
   
@@ -19,11 +19,16 @@ class MessagesController < ApplicationController
   
   post '/messages' do
     if is_logged_in?
-      if params[:content].empty?
+      if params[:content].empty? || params[:recipient].empty?
         redirect '/messages/new'
       else
-        @message = Message.new(:content => params[:content], :user_id => session[:user_id])
+        @message = Message.new(:content => params[:content], :recipient => params[:recipient], :user_id => session[:user_id])
         @message.save
+        if @message.save
+          redirect '/messages'
+        else
+          redirect '/messages/error'
+        end
       end
     else
       redirect '/login'
