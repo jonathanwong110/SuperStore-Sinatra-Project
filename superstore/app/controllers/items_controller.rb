@@ -23,7 +23,11 @@ class ItemsController < ApplicationController
         redirect '/items/new'
       else
         @item = Item.new(:title => params[:title], :price => params[:price], :description => params[:description], :user_id => session[:user_id])
-        @item.save
+        if @item.save
+          redirect '/items'
+        else
+          redirect 'items/error'
+        end
       end
     else
       redirect '/login'
@@ -42,20 +46,22 @@ class ItemsController < ApplicationController
   get '/items/:id/edit' do
     @item = Item.find(params[:id])
     if is_logged_in? && @item.user_id == current_user.id
+      @item.save
       erb :'/items/edit_item'
     else
       redirect '/login'
     end
   end
   
-  patch '/items/:id' do
+  patch '/items/:id/edit' do
     @item = Item.find(params[:id])
      if !params[:title].empty? || !params[:price].empty? || !params[:description].empty?
       @item.update(:title => params[:title], :price => params[:price], :description => params[:description])
       @item.save
-      redirect "/items/#{params[:id]}"
+      flash[:message] = "Edit successful"
+      redirect "/items/#{@item.id}"
     else
-      redirect "/items/#{params[:id]}/edit"
+      redirect "/items/#{@item.id}/edit"
     end
   end
 
