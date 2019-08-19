@@ -1,12 +1,18 @@
 <h2> Welcome <%=current_user.username %>! </h2>
+<h3> Inbox </h3>
 <p> ____________________ </p>
-  <% @messages.each do |message| %>
+<% @messages.each do |message| %>
+  <% if message.recipient == current_user.username || current_user.id == message.user_id%>
     <h3>Message: <%= message.content %></h3>
     <h3>From: <%= message.user.username %> </h3>
+    <h3>To: <%= message.recipient %> </h3>
     <p> ____________________ </p>
   <% end %>
+<% end %>
  <br>
-<a href="/messages/new">Message User | </a>
+
+<a href="/items">Items for Sale | </a>
+<a href="/messages/new">New Message | </a>
 <a href="/users">List of Users | </a>
 <a href="/items/new">Create a New Item</a><br><br>
 <a href="/logout">Log Out</a>
