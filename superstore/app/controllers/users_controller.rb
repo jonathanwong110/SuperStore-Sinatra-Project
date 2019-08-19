@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
   
   post '/signup' do
-    @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
+    @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password], :location => params[:location])
     if @user.save && @user.username != "" && @user.email != ""
       session[:user_id] = @user.id
       redirect "/items"
@@ -55,7 +55,6 @@ class UsersController < ApplicationController
   get '/users/:id' do
     if is_logged_in?
       @user = User.find(params[:id])
-      @item = Item.find(params[:id])
       @items = Item.all
       erb :'/users/show_user'
     else
