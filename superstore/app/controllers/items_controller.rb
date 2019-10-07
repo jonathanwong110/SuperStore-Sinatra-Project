@@ -21,17 +21,17 @@ class ItemsController < ApplicationController
     if is_logged_in?
       if params[:title].empty? || params[:price].empty? || params[:description].empty?
         if params[:title].empty?
-          flash[:error] = "Please enter a title"
+          flash[:error] = "*Please enter a title*"
         elsif params[:price].empty?
-          flash[:error] = "Please enter a price"
+          flash[:error] = "*Please enter a price*"
         else params[:description].empty?
-          flash[:error] = "Please enter a description"
+          flash[:error] = "*Please enter a description*"
         end
         redirect '/items/new'
       else
         @item = Item.new(:title => params[:title], :price => params[:price], :description => params[:description], :user_id => session[:user_id])
         if @item.save
-          flash[:message] = "Creation of #{@item.title.capitalize} is successful"
+          flash[:message] = "*Creation of #{@item.title.capitalize} is successful*"
           redirect "/items/#{@item.id}"
         end
       end
@@ -64,16 +64,16 @@ class ItemsController < ApplicationController
      if !params[:title].empty? && !params[:price].empty? && !params[:description].empty?
       @item.update(:title => params[:title], :price => params[:price], :description => params[:description])
       @item.save
-      flash[:message] = "Edit successful"
+      flash[:message] = "*Edit successful*"
       redirect "/items/#{@item.id}"
      elsif params[:title].empty?
-      flash[:error] = "Please enter a title"
+      flash[:error] = "*Please enter a title*"
       redirect "/items/#{@item.id}/edit"
      elsif params[:price].empty?
-      flash[:error] = "Please enter a price"
+      flash[:error] = "*Please enter a price*"
       redirect "/items/#{@item.id}/edit"
      else params[:description].empty?
-      flash[:error] = "Please enter a description"
+      flash[:error] = "*Please enter a description*"
       redirect "/items/#{@item.id}/edit"
     end
   end
@@ -83,7 +83,7 @@ class ItemsController < ApplicationController
     if is_logged_in?
       if @item.user_id == current_user.id
         @item.delete
-        flash[:message] = "Deletion of #{@item.title.capitalize} is successful"
+        flash[:message] = "Deletion of #{@item.title.capitalize} is successful*"
         redirect '/items'
       else
         redirect '/items'
