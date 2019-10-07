@@ -5,14 +5,14 @@ class ApplicationController < Sinatra::Base
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
-    enable :sessions
     use Rack::Flash, :sweep => true
+    enable :sessions
     set :session_secret, "secret"
   end
   
   get '/' do
     if is_logged_in?
-      redirect '/items'
+      redirect "/login"
     else
       erb :index
     end
