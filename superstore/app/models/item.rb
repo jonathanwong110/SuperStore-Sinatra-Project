@@ -1,6 +1,4 @@
 class Item < ActiveRecord::Base
-  validates :title, presence: true
-  validates :price, presence: true
-  validates :description, presence: true
+  validates_presence_of :title, :price, :description
   belongs_to :user
 end
