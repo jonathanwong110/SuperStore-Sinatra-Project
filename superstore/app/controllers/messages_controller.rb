@@ -20,15 +20,15 @@ class MessagesController < ApplicationController
   post '/messages' do
     if is_logged_in?
       if params[:content].empty?
-        flash[:error] = "Please enter a message"
+        flash[:error] = "*Please enter a message*"
         redirect '/messages/new'
       elsif params[:recipient].empty?
-        flash[:error] = "Please enter a recipient"
+        flash[:error] = "*Please enter a recipient*"
         redirect '/messages/new'
       elsif
         @message = Message.new(:content => params[:content], :recipient => params[:recipient], :user_id => session[:user_id])
         if @message.save
-          flash[:message] = "Message was sent to #{@message.recipient}"
+          flash[:message] = "*Message was sent to #{@message.recipient}*"
           redirect "/messages/#{@message.id}"
         end
       end
@@ -56,6 +56,7 @@ class MessagesController < ApplicationController
     if is_logged_in?
       if @message.user_id == current_user.id
         @message.delete
+        flash[:message] = "*Deletion of message was successful*"
         redirect '/messages'
       else
         redirect '/messages'
