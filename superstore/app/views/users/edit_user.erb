@@ -21,10 +21,10 @@
   <label for ="location"> Email: </label>
   <input type="text" name="email" id="email" value="<%=@user.email%>">
   <label for ="password_digest"> Password: </label>
-  <input type="text" name="password_digest" id="password_digest" type="password" value="">
+  <input type="password" name="password_digest" id="password_digest" type="password" value="">
   <input type="submit" value="Update User"><br></br>
 </form>
 
 <form method="post" action="/users/<%=@user.id%>/delete">
-  <input type="submit" value="Delete User">
+  <input type="submit" value="Delete Account">
 </form>
