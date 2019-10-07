@@ -8,9 +8,12 @@
       <a href="/logout">Log Out</a>
   </ul>
 <h2> Welcome <%=current_user.username %>! </h2>
-
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
 <p> ____________________ </p>
 <p><strong>Message: </strong><%= @message.content %></p>
+<p><strong>Posted: </strong><%= @message.created_at.strftime("%I:%M %p") %> - <%= @message.created_at.strftime("%A, %B %d, %Y") %></p>
 <p><strong>From: </strong><%= @message.user.username %></p>
 <p><strong>To: </strong><%= @message.recipient %></p>
 <p> ____________________ </p>
