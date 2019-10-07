@@ -1,5 +1,4 @@
 class Message < ActiveRecord::Base
-  validates :content, presence: true
-  validates :recipient, presence: true
+  validates_presence_of :content, :recipient
   belongs_to :user
 end
