@@ -19,6 +19,7 @@
 <% @messages.each do |message| %>
   <% if message.recipient == current_user.username || current_user.id == message.user_id%>
     <p><strong>Message: </strong><%= message.content %></p>
+    <p><strong>Posted: </strong><%= message.created_at.strftime("%I:%M %p") %> - <%= message.created_at.strftime("%A, %B %d, %Y") %></p>
     <p><strong>From: </strong><%= message.user.username %></p>
     <p><strong>To: </strong><%= message.recipient %></p>
     <a href="/messages/<%=message.id%>">View Message </a>
