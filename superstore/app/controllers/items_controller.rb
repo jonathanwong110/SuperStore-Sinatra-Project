@@ -83,7 +83,7 @@ class ItemsController < ApplicationController
     if is_logged_in?
       if @item.user_id == current_user.id
         @item.delete
-        flash[:message] = "Deletion of #{@item.title.capitalize} is successful*"
+        flash[:message] = "*Deletion of #{@item.title.capitalize} is successful*"
         redirect '/items'
       else
         redirect '/items'
