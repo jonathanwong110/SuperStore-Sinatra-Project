@@ -54,7 +54,7 @@ class MessagesController < ApplicationController
   post '/messages/:id/delete' do
     @message = Message.find(params[:id])
     if is_logged_in?
-      if @message.user_id == current_user.id
+      if @message.user_id == current_user.id || @message.recipient == current_user.username
         @message.delete
         flash[:message] = "*Deletion of message was successful*"
         redirect '/messages'
