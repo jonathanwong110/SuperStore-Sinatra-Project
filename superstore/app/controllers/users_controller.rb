@@ -70,7 +70,7 @@ class UsersController < ApplicationController
   get '/users/:id' do
     if is_logged_in?
       @user = User.find(params[:id])
-      @items = Item.all
+      @items = @user.items
       erb :'/users/show_user'
     else
       redirect '/login'
@@ -87,7 +87,7 @@ class UsersController < ApplicationController
     end
   end
   
-  post '/users/:id/edit' do
+  patch '/users/:id/edit' do
     @user = User.find(params[:id])
      if !params[:email].empty? && !params[:password_digest].empty? && !params[:location].empty?
       @user.update(:email => params[:email], :password => params[:password_digest], :location => params[:location])
