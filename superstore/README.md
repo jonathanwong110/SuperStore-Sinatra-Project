@@ -16,4 +16,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the SuperStore project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/'agile-archiver-4905'/superstore/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the SuperStore project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/jonathanwong110/SuperStore-Sinatra-Project/blob/wip/superstore/CODE_OF_CONDUCT.md).
