@@ -1,12 +1,15 @@
 class ItemsController < ApplicationController
   
+    #def redirect_if_not_logged_in
+    #  if !session[:user_id]
+    #    redirect '/login'
+    #  end
+    #end
+
   get '/items' do
-    if is_logged_in?
+    redirect_if_not_logged_in
       @items = Item.all
       erb :'/items/items'
-    else
-      redirect '/login'
-    end
   end
   
   get '/items/new' do
@@ -18,25 +21,22 @@ class ItemsController < ApplicationController
   end
   
   post '/items' do
-    if is_logged_in?
-      if params[:title].empty? || params[:price].empty? || params[:description].empty?
-        if params[:title].empty?
+    redirect_if_not_logged_in
+    if params[:title].empty? || params[:price].empty? || params[:description].empty?
+      if params[:title].empty?
           flash[:error] = "*Please enter a title*"
-        elsif params[:price].empty?
+      elsif params[:price].empty?
           flash[:error] = "*Please enter a price*"
-        else params[:description].empty?
+      else params[:description].empty?
           flash[:error] = "*Please enter a description*"
-        end
-        redirect '/items/new'
-      else
-        @item = Item.new(:title => params[:title], :price => params[:price], :description => params[:description], :user_id => session[:user_id])
-        if @item.save
-          flash[:message] = "*Creation of #{@item.title.capitalize} is successful*"
-          redirect "/items/#{@item.id}"
-        end
       end
+        redirect '/items/new'
     else
-      redirect '/login'
+      @item = Item.new(:title => params[:title], :price => params[:price], :description => params[:description], :user_id => session[:user_id])
+      if @item.save
+        flash[:message] = "*Creation of #{@item.title.capitalize} is successful*"
+        redirect "/items/#{@item.id}"
+      end
     end
   end
   
@@ -59,7 +59,11 @@ class ItemsController < ApplicationController
     end
   end
   
-  post '/items/:id/edit' do
+  patch '/items/:id/edit' do
+    @item = Item.find(params[:id])
+    if @item.user_id != current_user.id
+      redirect "/items/#{@item.id}"
+    end
     @item = Item.find(params[:id])
      if !params[:title].empty? && !params[:price].empty? && !params[:description].empty?
       @item.update(:title => params[:title], :price => params[:price], :description => params[:description])
