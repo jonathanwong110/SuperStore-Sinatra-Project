@@ -52,29 +52,22 @@ class UsersController < ApplicationController
   end
 
   get '/logout' do
-    if is_logged_in?
+    redirect_if_not_logged_in
       session.clear
       redirect '/'
-    end
   end
   
   get '/users' do
-    if is_logged_in?
+    redirect_if_not_logged_in
       @users = User.all
       erb :'/users/users'
-    else
-      redirect '/login'
-    end
   end
   
   get '/users/:id' do
-    if is_logged_in?
+    redirect_if_not_logged_in
       @user = User.find(params[:id])
       @items = @user.items
       erb :'/users/show_user'
-    else
-      redirect '/login'
-    end
   end
   
   get '/users/:id/edit' do

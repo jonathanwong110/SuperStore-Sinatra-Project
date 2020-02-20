@@ -1,10 +1,4 @@
 class ItemsController < ApplicationController
-  
-    #def redirect_if_not_logged_in
-    #  if !session[:user_id]
-    #    redirect '/login'
-    #  end
-    #end
 
   get '/items' do
     redirect_if_not_logged_in
@@ -13,11 +7,9 @@ class ItemsController < ApplicationController
   end
   
   get '/items/new' do
-    if is_logged_in?
+    redirect_if_not_logged_in
       erb :'/items/new'
-    else
       redirect '/login'
-    end
   end
   
   post '/items' do
@@ -41,12 +33,9 @@ class ItemsController < ApplicationController
   end
   
   get '/items/:id' do
-    if is_logged_in?
+    redirect_if_not_logged_in
       @item = Item.find(params[:id])
       erb :'/items/show_item'
-    else
-      redirect '/login'
-    end
   end
   
   get '/items/:id/edit' do
