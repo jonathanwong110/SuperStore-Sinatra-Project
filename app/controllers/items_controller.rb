@@ -9,7 +9,6 @@ class ItemsController < ApplicationController
   get '/items/new' do
     redirect_if_not_logged_in
       erb :'/items/new'
-      redirect '/login'
   end
   
   post '/items' do
@@ -39,8 +38,9 @@ class ItemsController < ApplicationController
   end
   
   get '/items/:id/edit' do
+    redirect_if_not_logged_in
     @item = Item.find(params[:id])
-    if is_logged_in? && @item.user_id == current_user.id
+    if @item.user_id == current_user.id
       @item.save
       erb :'/items/edit_item'
     else
@@ -49,6 +49,7 @@ class ItemsController < ApplicationController
   end
   
   patch '/items/:id/edit' do
+    redirect_if_not_logged_in
     @item = Item.find(params[:id])
     if @item.user_id != current_user.id
       redirect "/items/#{@item.id}"
@@ -72,8 +73,8 @@ class ItemsController < ApplicationController
   end
 
   post '/items/:id/delete' do
+    redirect_if_not_logged_in
     @item = Item.find(params[:id])
-    if is_logged_in?
       if @item.user_id == current_user.id
         @item.delete
         flash[:message] = "*Deletion of #{@item.title.capitalize} is successful*"
@@ -81,9 +82,6 @@ class ItemsController < ApplicationController
       else
         redirect '/items'
       end
-    else
-      redirect "/login"
-    end
   end
   
 end

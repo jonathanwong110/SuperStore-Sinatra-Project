@@ -29,9 +29,7 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    if !is_logged_in?
-      erb :'/users/login'
-    end
+    redirect_if_not_logged_in
   end
   
   post '/login' do
@@ -71,8 +69,9 @@ class UsersController < ApplicationController
   end
   
   get '/users/:id/edit' do
+    redirect_if_not_logged_in
     @user = User.find(params[:id])
-    if is_logged_in? && @user.id == current_user.id
+    if @user.id == current_user.id
       @user.save
       erb :'/users/edit_user'
     else
@@ -81,6 +80,7 @@ class UsersController < ApplicationController
   end
   
   patch '/users/:id/edit' do
+    redirect_if_not_logged_in
     @user = User.find(params[:id])
      if !params[:email].empty? && !params[:password_digest].empty? && !params[:location].empty?
       @user.update(:email => params[:email], :password => params[:password_digest], :location => params[:location])
