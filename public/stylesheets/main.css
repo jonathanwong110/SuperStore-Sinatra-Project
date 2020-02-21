@@ -1,3 +1,10 @@
 .main-nav {
     text-align: center;
 }
+
+.grid-products-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: 300px;
+}
