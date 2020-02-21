@@ -12,14 +12,15 @@
   <body>
     <header>
       <a id="superstore" href="/"><h1>SuperStore</h1></a>
-      <ul>
+      <ul class="main-nav">
         <% if is_logged_in? %>
-            <a href="/items">Items for Sale | </a>
-            <a href="/items/new">Create a New Item | </a>
-            <a href="/users">View Users | </a>
-            <a href="/messages">View Messages | </a>
-            <a href="/messages/new">New Message | </a>
-            <a href="/logout">Log Out</a>
+            <a href="/users/<%=current_user.id%>">Home | </a>
+            <a href="/items"> Items for Sale | </a>
+            <a href="/items/new"> Create a New Item | </a>
+            <a href="/users"> View Users | </a>
+            <a href="/messages"> View Messages | </a>
+            <a href="/messages/new"> New Message | </a>
+            <a href="/logout"> Log Out</a>
         <% end %>
       </ul>
     </header>
