@@ -29,7 +29,9 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    redirect_if_not_logged_in
+    if !is_logged_in?
+      erb :'/users/login'
+    end
   end
   
   post '/login' do
