@@ -2,21 +2,20 @@
   <%= flash[:message] %>
 <% end %>
 
-<h2> Welcome <%=current_user.username %>! </h2>
-<h3> Items for Sale </h3>
+<h1> Items for Sale </h1>
 
 <br></br>
 
 <div class="grid-items-container">
   <% @items.each do |item| %>
     <div class="grid-item">
-      <p><strong>Title: </strong><%= item.title.capitalize %></p>
-      <p><strong>Price: </strong>$<%= item.price %></p>
-      <p><strong>Description: </strong><%= item.description.capitalize %></p>
-      <p><strong>Seller: </strong><%= item.user.username %></p>
-      <p><strong>Seller's Location: </strong><%= item.user.location %></p>
-      <a href="/items/<%=item.id%>">View Item | </a>
-      <a href="/users/<%=item.user.id%>">View User </a>
+      <p> <strong> Title: </strong> <%= item.title.capitalize %> </p>
+      <p> <strong> Price: </strong> $<%= item.price %> </p>
+      <p> <strong> Description: </strong> <%= item.description.capitalize %> </p>
+      <p> <strong> Seller: </strong> <%= item.user.username %> </p>
+      <p> <strong> Seller's Location: </strong> <%= item.user.location %> </p>
+      <a href="/items/<%=item.id%>"> View Item | </a>
+      <a href="/users/<%=item.user.id%>"> View User </a>
     </div>
   <% end %>
 <ul>

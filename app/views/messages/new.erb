@@ -1,14 +1,13 @@
-<h2>Welcome <%= current_user.username %>!</h2>
-<h3>New Message</h3>
+<h3>Send Someone a Message!</h3>
 
 <% if flash.has?(:error) %>
   <%= flash[:error] %>
 <% end %><br></br>
 
-  <form action='/messages' method="post">
-    Message:
-    <input type="text" name="content" id="content">
-    Recipient:
-    <input type="text" name="recipient" id="recipient">
-    <input type="submit" name="submit" value="Send Message">
-  </form>
+<form action='/messages' method="post">
+  <label for ="message"> Message: </label>
+  <input type="text" name="content" id="content"> <br></br>
+  <label for ="recipient"> Recipient: </label>
+  <input type="text" name="recipient" id="recipient"> <br></br>
+  <input type="submit" name="submit" value="Send Message">
+</form>

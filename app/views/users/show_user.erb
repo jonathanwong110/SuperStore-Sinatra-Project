@@ -1,12 +1,14 @@
 <% if current_user.id == @user.id %>
   <h3> Your Listings <h3>
   <h3> Your Location: <%= @user.location %> </h3>
+  <br></br>
   <a href="/users/<%=@user.id%>/edit">Edit Profile</a>
 <% else %>
   <h3> <%= @user.username %>'s Listings</h3>
   <h3> Seller's Location: <%= @user.location %> </h3>
 <% end %>
 
+<br></br>
 <br></br>
 
 <ul class="grid-items-container">
