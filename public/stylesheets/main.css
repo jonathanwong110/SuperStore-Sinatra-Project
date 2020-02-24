@@ -2,7 +2,7 @@
     text-align: center;
 }
 
-.grid-products-container {
+.grid-items-container, .grid-messages-container, .grid-users-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;

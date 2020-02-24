@@ -1,16 +1,31 @@
-<h2> Welcome <%=current_user.username %>! </h2>
-<h3> <%= @user.username %>'s Listings</h3>
-<h3> Seller's Location: <%= @user.location %> </h3>
 <% if current_user.id == @user.id %>
+  <h3> Your Listings <h3>
+  <h3> Your Location: <%= @user.location %> </h3>
   <a href="/users/<%=@user.id%>/edit">Edit Profile</a>
+<% else %>
+  <h3> <%= @user.username %>'s Listings</h3>
+  <h3> Seller's Location: <%= @user.location %> </h3>
 <% end %>
-<p> ____________________ </p>
-<% @items.each do |item| %>
-  <% if item.user_id == @user.id %>
-    <p><strong>Title: </strong><%= item.title.capitalize %></p>
-    <p><strong>Price: </strong>$<%= item.price %></p>
-    <p><strong>Description: </strong><%= item.description.capitalize %></p>
-    <a href="/items/<%=item.id%>">View Item</a>
-    <p> ____________________ </p>
+
+<br></br>
+
+<ul class="grid-items-container">
+  <% if @user.items != [] %>
+    <% @items.each do |item| %>
+      <% if item.user_id == @user.id %>
+        <div class="grid-product">
+          <p><strong>Title: </strong><%= item.title.capitalize %></p>
+          <p><strong>Price: </strong>$<%= item.price %></p>
+          <p><strong>Description: </strong><%= item.description.capitalize %></p>
+          <a href="/items/<%=item.id%>">View Item</a>
+        </div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <% if @user.id == current_user.id %>
+      <b> You have not posted any products yet! </b>
+    <% else %>
+      <b> This Seller has not listed any products yet! </b>
+    <% end %>
   <% end %>
-<% end %>
+<ul>
