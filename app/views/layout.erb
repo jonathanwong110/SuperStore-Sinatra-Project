@@ -14,13 +14,13 @@
     <header>
       <ul class="main-nav">
         <% if is_logged_in? %>
-            <li class="nav-item"> <a href="/users/<%=current_user.id%>"> Home </a> </li>
-            <li class="nav-item"> <a href="/items"> Items for Sale </a> </li>
+            <li class="nav-logo"> <a href="/items"> SuperStore </a> </li>
             <li class="nav-item"> <a href="/items/new"> Create a New Item </a> </li>
             <li class="nav-item"> <a href="/users"> View Users </a> </li>
             <li class="nav-item"> <a href="/messages"> View Messages </a> </li>
             <li class="nav-item"> <a href="/messages/new"> New Message </a> </li>
-            <li class="nav-item"> <a href="/logout"> Log Out </a> </li>
+            <li class="nav-right-side"> <a href="/logout"> Log Out </a> </li>
+            <li class="nav-right-side"> <a href="/users/<%=current_user.id%>"> Home </a> </li>
         <% end %>
       </ul>
     </header>

@@ -1,4 +1,4 @@
-<h3 class="heading"> Inbox </h3>
+<h3 class="heading-for-many"> Inbox </h3>
 
 <% if flash.has?(:message) %>
   <%= flash[:message] %>
@@ -6,16 +6,24 @@
 
 <br></br>
 
-<ul class="grid-messages-container">
+<div class="grid-messages-container">
   <% @messages.each do |message| %>
     <% if message.recipient == current_user.username || current_user.id == message.user_id%>
       <div class="grid-message">
-      <p> <strong>Message: </strong> <%= message.content %> </p>
-      <p> <strong>Posted: </strong> <%= message.created_at.strftime("%I:%M %p") %> - <%= message.created_at.strftime("%A, %B %d, %Y") %> </p>
-      <p> <strong>From: </strong> <%= message.user.username %> </p>
-      <p> <strong>To: </strong> <%= message.recipient %> </p>
+      <p> <strong> Message: </strong> <%= message.content %> </p>
+      <p> <strong> Posted: </strong> <%= message.created_at.strftime("%I:%M %p") %> - <%= message.created_at.strftime("%A, %B %d, %Y") %> </p>
+      <% if message.user.id == current_user.id %>
+        <p> <strong> From: </strong> You </p>
+      <% else %>
+        <p> <strong> From: </strong> <%= message.user.username %> </p>
+      <% end %>
+      <% if message.recipient == current_user.username %>
+        <p> <strong> To: </strong> You </p>
+      <% else %>
+        <p> <strong> To: </strong> <%= message.recipient %> </p>
+      <% end %>
       <a href="/messages/<%=message.id%>"> View Message </a>
       </div>
     <% end %>
   <% end %>
-<ul>
+</div>

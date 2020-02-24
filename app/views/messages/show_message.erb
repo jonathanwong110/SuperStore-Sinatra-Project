@@ -1,14 +1,29 @@
-<h2> Welcome <%=current_user.username %>! </h2>
+<h3 class="heading-for-one"> Viewing Message from <%= @message.user.username %> </h3>
+
 <% if flash.has?(:message) %>
   <%= flash[:message] %>
 <% end %>
-<p> ____________________ </p>
-<p><strong>Message: </strong><%= @message.content %></p>
-<p><strong>Posted: </strong><%= @message.created_at.strftime("%I:%M %p") %> - <%= @message.created_at.strftime("%A, %B %d, %Y") %></p>
-<p><strong>From: </strong><%= @message.user.username %></p>
-<p><strong>To: </strong><%= @message.recipient %></p>
-<p> ____________________ </p>
+
+
+<br></br>
+
+<div class="individual-message">
+
+  <p> <strong> Message: </strong> <%= @message.content %> </p>
+  <p> <strong> Posted: </strong> <%= @message.created_at.strftime("%I:%M %p") %> - <%= @message.created_at.strftime("%A, %B %d, %Y") %> </p>
+  <% if @message.user.id == current_user.id %>
+    <p> <strong> From: </strong> You </p>
+  <% else %>
+    <p> <strong> From: </strong> <%= @message.user.username %> </p>
+  <% end %>
+  <% if @message.recipient == current_user.username %>
+    <p> <strong> To: </strong> You </p>
+  <% else %>
+    <p> <strong> To: </strong> <%= @message.recipient %> </p>
+  <% end %>
 
   <form method="post" action="/messages/<%=@message.id%>/delete">
     <input type="submit" value="Delete Message">
   </form>
+
+</div>

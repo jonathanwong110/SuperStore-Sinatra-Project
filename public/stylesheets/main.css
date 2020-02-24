@@ -6,10 +6,6 @@
     background-color: #333;
 }
 
-.heading {
-    text-align: center;
-}
-
 .nav-item {
     display: block;
     text-align: center;
@@ -18,10 +14,38 @@
     float: left;
 }
 
+.nav-logo {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    float: left;
+}
+
+.nav-right-side {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    float: right;
+}
+
+.heading-for-one, .individual-message, .individual-item, .new-item, .new-message {
+    width: 95%;
+    margin: auto;
+    padding: 40px;
+}
+
+.heading-for-many {
+    text-align: center;
+    padding: 30px;
+}
+
 .grid-items-container, .grid-messages-container, .grid-users-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
     grid-auto-rows: 300px;
-    margin: auto
+    margin: auto;
+    padding: 40px
 }

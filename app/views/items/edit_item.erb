@@ -1,4 +1,4 @@
-<h3 class="heading"> Edit Item: <%= @item.title.capitalize %></h3>
+<h3 class="heading-for-many"> Edit Item: <%= @item.title.capitalize %> </h3>
 <% if flash.has?(:message) %>
   <%= flash[:message] %>
 <% end %>
@@ -8,6 +8,7 @@
 <% end %>
 <br></br>
 
+<ul class="individual-item">
   <form method="post" action="/items/<%=@item.id%>/edit">
     <input id="hidden" type="hidden" name="_method" value="patch">
     <label for ="title"> Title: </label>
@@ -18,7 +19,8 @@
     <input type="text" name="description" id="description" value="<%=@item.description%>"><br/><br/>
     <div><input type="submit" value="Update Item"></div><br></br>
   </form>
+</div>
 
-  <form method="post" action="/items/<%=@item.id%>/delete">
-    <input type="submit" value="Delete Item">
-  </form>
+<form method="post" action="/items/<%=@item.id%>/delete">
+  <input type="submit" value="Delete Item">
+</form>

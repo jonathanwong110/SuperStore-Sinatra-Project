@@ -3,19 +3,19 @@
     <h3> Your Listings <h3>
     <h3> Your Location: <%= @user.location %> </h3>
     <br>
-    <a href="/users/<%=@user.id%>/edit" > Edit Profile </a>
+    <a href="/users/<%=@user.id%>/edit"> Edit Profile </a>
   </div>
 <% else %>
   <div class="heading">
-    <h3 class="heading"> <%= @user.username %>'s Listings </h3>
-    <h3 class="heading"> Seller's Location: <%= @user.location %> </h3>
+    <h3> <%= @user.username %>'s Listings </h3>
+    <h3> Seller's Location: <%= @user.location %> </h3>
   </div>
 <% end %>
 
 <br></br>
 <br></br>
 
-<ul class="grid-items-container">
+<div class="grid-items-container">
   <% if @user.items != [] %>
     <% @items.each do |item| %>
       <% if item.user_id == @user.id %>
@@ -34,4 +34,4 @@
       <b> This Seller has not listed any products yet! </b>
     <% end %>
   <% end %>
-<ul>
+</div>

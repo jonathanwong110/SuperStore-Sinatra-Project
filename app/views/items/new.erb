@@ -1,10 +1,12 @@
-<h3>Post a New Item!</h3>
+<h3 class="heading-for-one"> Post a New Item! </h3>
 
 <% if flash.has?(:error) %>
   <%= flash[:error] %>
 <% end %>
 
 <br></br>
+
+<div class="new-item"
 
   <form action='/items' method="post">
     <label for ="title"> Title: </label>
@@ -15,5 +17,7 @@
     <input type="text" name="description" id="description">
     <input type="submit" name="submit" value="Create Your Item">
   </form>
+  
+</div>
 
 <br><br>

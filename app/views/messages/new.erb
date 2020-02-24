@@ -1,13 +1,15 @@
-<h3>Send Someone a Message!</h3>
+<h3 class="heading-for-one">Send Someone a Message!</h3>
 
 <% if flash.has?(:error) %>
   <%= flash[:error] %>
 <% end %><br></br>
 
-<form action='/messages' method="post">
-  <label for ="message"> Message: </label>
-  <input type="text" name="content" id="content">
-  <label for ="recipient"> Recipient: </label>
-  <input type="text" name="recipient" id="recipient">
-  <input type="submit" name="submit" value="Send Message">
-</form>
+<div class="new-message">
+  <form action='/messages' method="post">
+    <label for ="message"> Message: </label>
+    <input type="text" name="content" id="content">
+    <label for ="recipient"> Recipient: </label>
+    <input type="text" name="recipient" id="recipient">
+    <input type="submit" name="submit" value="Send Message">
+  </form>
+</div>
