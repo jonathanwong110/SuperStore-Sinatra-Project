@@ -1,24 +1,26 @@
-<h2>Sign Up</h2>
+<h1 class="heading-for-one">Sign Up</h1>
 
-    <% if flash.has?(:error) %>
-      <%= flash[:error] %>
-    <% end %>
-    
-<br></br>
+<div class="error-message">
+  <% if flash.has?(:error) %>
+    <%= flash[:error] %>
+  <% end %>
+</div>
 
+<div class="before-logged-in">
   <form action="/signup" method="POST">
     <label for ="username">Username: </label>
     <input type="text" name="username" id="username">
-    <br><br>
     <label for ="password">Password: </label>
     <input type="password" name="password" id="password">
-    <br><br>
     <label for ="email">Email: </label>
-    <input type="text" name="email" id="email"><br></br>
+    <input type="text" name="email" id="email">
     <label for ="email">Location: </label>
     <input type="text" name="location" id="location">
-    <br><br>
     <input type="submit" value="Sign Up">
   </form>
+
+  <br></br>
   
-<a href="/login">Log in instead </a>
+  <a href="/login">Log in instead </a>
+
+</div>

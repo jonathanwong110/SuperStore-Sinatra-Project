@@ -1,8 +1,10 @@
 <h3 class="heading-for-one">Send Someone a Message!</h3>
 
-<% if flash.has?(:error) %>
-  <%= flash[:error] %>
-<% end %><br></br>
+<div class="error-message">
+  <% if flash.has?(:error) %>
+    <%= flash[:error] %>
+  <% end %>
+</div>
 
 <div class="new-message">
   <form action='/messages' method="post">

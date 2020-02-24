@@ -1,8 +1,10 @@
 <h3 class="heading-for-one"> Post a New Item! </h3>
 
-<% if flash.has?(:error) %>
-  <%= flash[:error] %>
-<% end %>
+<div class="error-message">
+  <% if flash.has?(:error) %>
+    <%= flash[:error] %>
+  <% end %>
+</div>
 
 <br></br>
 

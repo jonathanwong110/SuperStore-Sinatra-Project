@@ -1,8 +1,10 @@
 <h3 class="heading-for-many"> Inbox </h3>
 
-<% if flash.has?(:message) %>
-  <%= flash[:message] %>
-<% end %>
+<div class="success-message">
+  <% if flash.has?(:message) %>
+    <%= flash[:message] %>
+  <% end %>
+</div>
 
 <br></br>
 

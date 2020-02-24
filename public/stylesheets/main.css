@@ -30,6 +30,12 @@
     float: right;
 }
 
+.before-logged-in {
+    width: 95%;
+    margin: auto;
+    padding: 40px;
+}
+
 .heading-for-one, .individual-message, .individual-item, .new-item, .new-message {
     width: 95%;
     margin: auto;
@@ -48,4 +54,18 @@
     grid-auto-rows: 300px;
     margin: auto;
     padding: 40px
+}
+
+.error-message {
+    color: red;
+    width: 95%;
+    margin: auto;
+    padding: 40px;
+}
+
+.success-message {
+    color: green;
+    width: 95%;
+    margin: auto;
+    padding: 40px;
 }

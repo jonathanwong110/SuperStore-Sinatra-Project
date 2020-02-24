@@ -1,8 +1,12 @@
-<h2>Log In</h2>
+<h1 class="heading-for-one">Log In</h1>
 
-<% if flash.has?(:error) %>
-  <%= flash[:error] %>
-<% end %><br></br>
+<div class="error-message">
+  <% if flash.has?(:error) %>
+    <%= flash[:error] %>
+  <% end %>
+</div>
+
+<div class="before-logged-in">
 
   <form action="/login" method="POST">
     <label for ="username">Username: </label>
@@ -12,4 +16,8 @@
     <input type="submit" value="Login">
   </form>
   
-<a href="/signup">Sign up instead </a>
+  <br></br>
+
+  <a href="/signup">Sign up instead </a>
+
+</div>

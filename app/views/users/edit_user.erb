@@ -1,8 +1,10 @@
 <h3 class="heading-for-many"> Edit Profile: </h3>
 
-<% if flash.has?(:error) %>
-  <%= flash[:error] %>
-<% end %><br></br>
+<div class="error-message">
+  <% if flash.has?(:error) %>
+    <%= flash[:error] %>
+  <% end %>
+</div>
 
 <form method="post" action="/users/<%=@user.id%>/edit">
   <input id="hidden" type="hidden" name="_method" value="patch">

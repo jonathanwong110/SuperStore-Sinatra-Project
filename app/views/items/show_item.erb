@@ -1,10 +1,10 @@
 <h3 class="heading-for-one"> Viewing <%= @item.title.capitalize %> </h3>
 
-<% if flash.has?(:message) %>
-  <%= flash[:message] %>
-<% end %>
-
-<br></br>
+<div class="success-message">
+  <% if flash.has?(:message) %>
+    <%= flash[:message] %>
+  <% end %>
+</div>
 
 <ul class="individual-item">
   <h4> <strong> Title: </strong> <%= @item.title.capitalize %> </h4>

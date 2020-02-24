@@ -1,11 +1,11 @@
 <h3 class="heading-for-many"> Edit Item: <%= @item.title.capitalize %> </h3>
-<% if flash.has?(:message) %>
-  <%= flash[:message] %>
-<% end %>
 
-<% if flash.has?(:error) %>
-  <%= flash[:error] %>
-<% end %>
+<div class="error-message">
+  <% if flash.has?(:error) %>
+    <%= flash[:error] %>
+  <% end %>
+</div>
+
 <br></br>
 
 <ul class="individual-item">
