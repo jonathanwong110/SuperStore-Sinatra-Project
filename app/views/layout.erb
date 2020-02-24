@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    
     <title>SuperStore</title>
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -11,16 +12,15 @@
   </head>
   <body>
     <header>
-    <br></br>
       <ul class="main-nav">
         <% if is_logged_in? %>
-            <a href="/users/<%=current_user.id%>"> Home | </a>
-            <a href="/items"> Items for Sale | </a>
-            <a href="/items/new"> Create a New Item | </a>
-            <a href="/users"> View Users | </a>
-            <a href="/messages"> View Messages | </a>
-            <a href="/messages/new"> New Message | </a>
-            <a href="/logout"> Log Out</a>
+            <li class="nav-item"> <a href="/users/<%=current_user.id%>"> Home </a> </li>
+            <li class="nav-item"> <a href="/items"> Items for Sale </a> </li>
+            <li class="nav-item"> <a href="/items/new"> Create a New Item </a> </li>
+            <li class="nav-item"> <a href="/users"> View Users </a> </li>
+            <li class="nav-item"> <a href="/messages"> View Messages </a> </li>
+            <li class="nav-item"> <a href="/messages/new"> New Message </a> </li>
+            <li class="nav-item"> <a href="/logout"> Log Out </a> </li>
         <% end %>
       </ul>
     </header>

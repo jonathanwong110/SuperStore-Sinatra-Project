@@ -13,11 +13,10 @@ class MessagesController < ApplicationController
   
   post '/messages' do
     redirect_if_not_logged_in
-    if @message = Message.new(:content => params[:content], :recipient => params[:recipient], :user_id => session[:user_id])
-      if @message.save
-        flash[:message] = "*Message was sent to #{@message.recipient}*"
-        redirect "/messages/#{@message.id}"
-      end
+    @message = Message.new(:content => params[:content], :recipient => params[:recipient], :user_id => session[:user_id])
+    if @message.save
+      flash[:message] = "*Message was sent to #{@message.recipient}*"
+      redirect "/messages/#{@message.id}"
     elsif params[:content].empty?
       flash[:error] = "*Please enter a message*"
       redirect '/messages/new'

@@ -1,5 +1,4 @@
-<h2> Welcome <%=current_user.username %>! </h2>
-<h3>Edit Item: <%= @item.title.capitalize %></h3>
+<h3 class="heading"> Edit Item: <%= @item.title.capitalize %></h3>
 <% if flash.has?(:message) %>
   <%= flash[:message] %>
 <% end %>
