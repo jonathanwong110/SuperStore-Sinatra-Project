@@ -1,25 +1,20 @@
-<% if current_user.id == @user.id %>
-  <div class="heading">
-    <h3> Your Listings <h3>
+<div class="heading-for-many">
+  <% if current_user.id == @user.id %>
     <h3> Your Location: <%= @user.location %> </h3>
+    <h3> Your Listings </h3>
     <br>
     <a href="/users/<%=@user.id%>/edit"> Edit Profile </a>
-  </div>
-<% else %>
-  <div class="heading">
+  <% else %>
+    <h3> This Seller is Located In: <%= @user.location %> </h3>
     <h3> <%= @user.username %>'s Listings </h3>
-    <h3> Seller's Location: <%= @user.location %> </h3>
-  </div>
-<% end %>
-
-<br></br>
-<br></br>
+  <% end %>
+</div>
 
 <div class="grid-items-container">
   <% if @user.items != [] %>
     <% @items.each do |item| %>
       <% if item.user_id == @user.id %>
-        <div class="grid-item">
+        <div class="individual-item">
           <p> <strong> Title: </strong> <%= item.title.capitalize %> </p>
           <p> <strong> Price: </strong> $<%= item.price %> </p>
           <p> <strong> Description: </strong> <%= item.description.capitalize %> </p>
