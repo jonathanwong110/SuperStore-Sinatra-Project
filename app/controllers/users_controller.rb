@@ -103,7 +103,7 @@ class UsersController < ApplicationController
     end
   end
 
-  post '/items/:id/delete' do
+  post '/users/:id/delete' do
     redirect_if_not_logged_in
     @user = User.find(params[:id])
     if @user.id == current_user.id
