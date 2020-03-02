@@ -2,13 +2,13 @@ class ItemsController < ApplicationController
 
   get '/items' do
     redirect_if_not_logged_in
-      @items = Item.all
-      erb :'/items/items'
+    @items = Item.all
+    erb :'/items/items'
   end
   
   get '/items/new' do
     redirect_if_not_logged_in
-      erb :'/items/new'
+    erb :'/items/new'
   end
   
   post '/items' do
@@ -31,8 +31,8 @@ class ItemsController < ApplicationController
   
   get '/items/:id' do
     redirect_if_not_logged_in
-      @item = Item.find(params[:id])
-      erb :'/items/show_item'
+    @item = Item.find(params[:id])
+    erb :'/items/show_item'
   end
   
   get '/items/:id/edit' do
@@ -73,13 +73,13 @@ class ItemsController < ApplicationController
   post '/items/:id/delete' do
     redirect_if_not_logged_in
     @item = Item.find(params[:id])
-      if @item.user_id == current_user.id
-        @item.delete
-        flash[:message] = "*Deletion of #{@item.title.capitalize} is successful*"
-        redirect '/items'
-      else
-        redirect '/items'
-      end
+    if @item.user_id == current_user.id
+      @item.delete
+      flash[:message] = "*Deletion of #{@item.title.capitalize} is successful*"
+      redirect '/items'
+    else
+      redirect '/items'
+    end
   end
   
 end

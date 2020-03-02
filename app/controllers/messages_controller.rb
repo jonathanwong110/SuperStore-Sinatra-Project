@@ -2,13 +2,13 @@ class MessagesController < ApplicationController
 
   get '/messages' do
     redirect_if_not_logged_in
-      @messages = Message.all
-      erb :'/messages/messages'
+    @messages = Message.all
+    erb :'/messages/messages'
   end
   
   get '/messages/new' do
     redirect_if_not_logged_in
-      erb :'/messages/new'
+    erb :'/messages/new'
   end
   
   post '/messages' do
@@ -41,8 +41,8 @@ class MessagesController < ApplicationController
   end
 
   post '/messages/:id/delete' do
-    @message = Message.find(params[:id])
     redirect_if_not_logged_in
+    @message = Message.find(params[:id])
     if @message.user_id == current_user.id || @message.recipient == current_user.username
       @message.delete
       flash[:message] = "*Deletion of message was successful*"

@@ -53,21 +53,21 @@ class UsersController < ApplicationController
 
   get '/logout' do
     redirect_if_not_logged_in
-      session.clear
-      redirect '/'
+    session.clear
+    redirect '/'
   end
   
   get '/users' do
     redirect_if_not_logged_in
-      @users = User.all
-      erb :'/users/users'
+    @users = User.all
+    erb :'/users/users'
   end
   
   get '/users/:id' do
     redirect_if_not_logged_in
-      @user = User.find(params[:id])
-      @items = @user.items
-      erb :'/users/show_user'
+    @user = User.find(params[:id])
+    @items = @user.items
+    erb :'/users/show_user'
   end
   
   get '/users/:id/edit' do
@@ -84,22 +84,34 @@ class UsersController < ApplicationController
   patch '/users/:id/edit' do
     redirect_if_not_logged_in
     @user = User.find(params[:id])
-     if !params[:email].empty? && !params[:password_digest].empty? && !params[:location].empty?
+    if !params[:email].empty? && !params[:password_digest].empty? && !params[:location].empty?
       @user.update(:email => params[:email], :password => params[:password_digest], :location => params[:location])
       @user.save
       flash[:message] = "*Update is successful*"
       redirect "/users/#{@user.id}"
-     elsif params[:email].empty?
+    elsif params[:email].empty?
       flash[:error] = "*Please enter an email*"
-     elsif params[:location].empty?
+    elsif params[:location].empty?
       flash[:error] = "*Please enter a location*"
       redirect "/users/#{@user.id}/edit"
-     elsif params[:password_digest].empty?
+    elsif params[:password_digest].empty?
       flash[:error] = "*Please enter a password*"
       redirect "/users/#{@user.id}/edit"
-     else params[:location].empty?
+    else params[:location].empty?
       flash[:error] = "*Please enter a location*"
       redirect "/users/#{@user.id}/edit"
+    end
+  end
+
+  post '/items/:id/delete' do
+    redirect_if_not_logged_in
+    @user = User.find(params[:id])
+    if @user.id == current_user.id
+      @user.delete
+      flash[:message] = "*Your account was successfully deleted*"
+      redirect '/'
+    else
+      redirect '/users'
     end
   end
   

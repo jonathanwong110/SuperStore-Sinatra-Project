@@ -6,6 +6,11 @@
   <% end %>
 </div>
 
+<b>Please note that a password must be entered to submit changes. Please submit the same password if you do not want to change the password. </b>
+
+<br></br>
+<br></br>
+
 <form method="post" action="/users/<%=@user.id%>/edit">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <label for ="location"> Location: </label>
