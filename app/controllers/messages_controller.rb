@@ -30,8 +30,8 @@ class MessagesController < ApplicationController
   end
   
   get '/messages/:id' do
-    @message = Message.find(params[:id])
     redirect_if_not_logged_in
+    @message = Message.find(params[:id])
     if @message.user_id == current_user.id || @message.recipient == current_user.username
       @message = Message.find(params[:id])
       erb :'/messages/show_message'
