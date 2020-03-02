@@ -1,5 +1,6 @@
 <div class="heading-for-many">
   <% if current_user.id == @user.id %>
+    <h1> Welcome <%= @user.username %>! </h3>
     <h3> Your Location: <%= @user.location %> </h3>
     <h3> Your Listings </h3>
     <br>

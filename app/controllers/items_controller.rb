@@ -13,21 +13,19 @@ class ItemsController < ApplicationController
   
   post '/items' do
     redirect_if_not_logged_in
-    if params[:title].empty? || params[:price].empty? || params[:description].empty?
-      if params[:title].empty?
-          flash[:error] = "*Please enter a title*"
-      elsif params[:price].empty?
-          flash[:error] = "*Please enter a price*"
-      else params[:description].empty?
-          flash[:error] = "*Please enter a description*"
-      end
-        redirect '/items/new'
-    else
-      @item = Item.new(:title => params[:title], :price => params[:price], :description => params[:description], :user_id => session[:user_id])
-      if @item.save
-        flash[:message] = "*Creation of #{@item.title.capitalize} is successful*"
-        redirect "/items/#{@item.id}"
-      end
+    @item = Item.new(:title => params[:title], :price => params[:price], :description => params[:description], :user_id => session[:user_id])
+    if @item.save
+      flash[:message] = "*Creation of #{@item.title.capitalize} is successful*"
+      redirect "/items/#{@item.id}"
+    elsif params[:title].empty?
+      flash[:error] = "*Please enter a title*"
+      redirect '/items/new'
+    elsif params[:price].empty?
+      flash[:error] = "*Please enter a price*"
+      redirect '/items/new'
+    else params[:description].empty?
+      flash[:error] = "*Please enter a description*"
+      redirect '/items/new'
     end
   end
   
